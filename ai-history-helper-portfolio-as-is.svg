@@ -1,0 +1,173 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2565" height="850" viewBox="0 0 2565 850" role="img" aria-labelledby="diagram-title diagram-desc">
+<title id="diagram-title">Подготовка теста по истории с AI History Helper</title>
+<desc id="diagram-desc">BPMN collaboration diagram based on the edited BPMN file.</desc>
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#344256"/></marker>
+<marker id="message" markerWidth="12" markerHeight="12" refX="10" refY="4" orient="auto"><path d="M0,0 L0,8 L10,4 z" fill="none" stroke="#2868d7" stroke-width="1.5"/></marker>
+<marker id="message-start" markerWidth="8" markerHeight="8" refX="4" refY="4"><circle cx="4" cy="4" r="2.5" fill="#fff" stroke="#2868d7" stroke-width="1.5"/></marker>
+<style>text{font-family:Inter,Segoe UI,Arial,sans-serif;fill:#172033}.title{font-size:25px;font-weight:700}.subtitle{font-size:14px;fill:#5c687b}.pool-title{font-size:16px;font-weight:700}.node{font-size:14px;font-weight:500}.small{font-size:12px;font-weight:500}.edge{font-size:12px;font-weight:600;paint-order:stroke;stroke:#fff;stroke-width:5px}</style>
+</defs>
+<rect width="100%" height="100%" fill="#fff"/>
+<text x="160" y="34" class="title" text-anchor="start"><tspan x="160" dy="0">Подготовка теста по истории с AI History Helper</tspan></text>
+<text x="160" y="58" class="subtitle" text-anchor="start"><tspan x="160" dy="0">BPMN 2.0 · основной пользовательский сценарий</tspan></text>
+<rect x="160" y="100" width="2350" height="300" fill="#edf5ff" stroke="#65748a" stroke-width="2"/>
+<line x1="202" y1="100" x2="202" y2="400" stroke="#65748a" stroke-width="1.4"/>
+<text x="183" y="250" class="pool-title" text-anchor="middle" transform="rotate(-90 183 250)">Учитель</text>
+<rect x="160" y="460" width="2350" height="350" fill="#f8fafc" stroke="#65748a" stroke-width="2"/>
+<line x1="202" y1="460" x2="202" y2="810" stroke="#65748a" stroke-width="1.4"/>
+<text x="183" y="635" class="pool-title" text-anchor="middle" transform="rotate(-90 183 635)">AI History Helper</text>
+<polyline points="640,275 640,600" fill="none" stroke="#2868d7" stroke-width="1.7" stroke-dasharray="8 6" marker-start="url(#message-start)" marker-end="url(#message)"/>
+<polyline points="1215,580 1215,257" fill="none" stroke="#2868d7" stroke-width="1.7" stroke-dasharray="8 6" marker-start="url(#message-start)" marker-end="url(#message)"/>
+<polyline points="1695,210 1810,210 1810,480 1695,480 1695,500" fill="none" stroke="#2868d7" stroke-width="1.7" stroke-dasharray="8 6" marker-start="url(#message-start)" marker-end="url(#message)"/>
+<polyline points="2110,500 2110,192" fill="none" stroke="#2868d7" stroke-width="1.7" stroke-dasharray="8 6" marker-start="url(#message-start)" marker-end="url(#message)"/>
+<polyline points="1610,365 1590,365 1590,670 1695,670 1695,690" fill="none" stroke="#2868d7" stroke-width="1.7" stroke-dasharray="8 6" marker-start="url(#message-start)" marker-end="url(#message)"/>
+<polyline points="2250,690 2250,352" fill="none" stroke="#2868d7" stroke-width="1.7" stroke-dasharray="8 6" marker-start="url(#message-start)" marker-end="url(#message)"/>
+<polyline points="252,238 290,235" fill="none" stroke="#344256" stroke-width="1.7" marker-end="url(#arrow)"/>
+<polyline points="480,235 550,235" fill="none" stroke="#344256" stroke-width="1.7" marker-end="url(#arrow)"/>
+<polyline points="730,235 1194,236" fill="none" stroke="#344256" stroke-width="1.7" marker-end="url(#arrow)"/>
+<polyline points="1236,236 1260,235" fill="none" stroke="#344256" stroke-width="1.7" marker-end="url(#arrow)"/>
+<polyline points="2110,150 2110,115 1352,115 1352,195" fill="none" stroke="#344256" stroke-width="1.7" marker-end="url(#arrow)"/>
+<polyline points="1445,235 1470,235" fill="none" stroke="#344256" stroke-width="1.7" marker-end="url(#arrow)"/>
+<polyline points="1532,235 1560,235 1560,172 1600,172" fill="none" stroke="#344256" stroke-width="1.7" marker-end="url(#arrow)"/>
+<polyline points="1501,266 1501,330 1600,330" fill="none" stroke="#344256" stroke-width="1.7" marker-end="url(#arrow)"/>
+<polyline points="1790,172 2089,171" fill="none" stroke="#344256" stroke-width="1.7" marker-end="url(#arrow)"/>
+<polyline points="1790,330 2229,331" fill="none" stroke="#344256" stroke-width="1.7" marker-end="url(#arrow)"/>
+<polyline points="2271,331 2400,331" fill="none" stroke="#344256" stroke-width="1.7" marker-end="url(#arrow)"/>
+<polyline points="661,621 720,621" fill="none" stroke="#344256" stroke-width="1.7" marker-end="url(#arrow)"/>
+<polyline points="910,621 945,621" fill="none" stroke="#344256" stroke-width="1.7" marker-end="url(#arrow)"/>
+<polyline points="1110,621 1130,621" fill="none" stroke="#344256" stroke-width="1.7" marker-end="url(#arrow)"/>
+<polyline points="1300,621 1470,617" fill="none" stroke="#344256" stroke-width="1.7" marker-end="url(#arrow)"/>
+<polyline points="2110,575 2110,655 1560,655 1560,617 1532,617" fill="none" stroke="#344256" stroke-width="1.7" marker-end="url(#arrow)"/>
+<polyline points="1532,617 1560,617 1560,537 1600,537" fill="none" stroke="#344256" stroke-width="1.7" marker-end="url(#arrow)"/>
+<polyline points="1501,648 1501,727 1600,727" fill="none" stroke="#344256" stroke-width="1.7" marker-end="url(#arrow)"/>
+<polyline points="1790,537 1830,537" fill="none" stroke="#344256" stroke-width="1.7" marker-end="url(#arrow)"/>
+<polyline points="2000,537 2020,537" fill="none" stroke="#344256" stroke-width="1.7" marker-end="url(#arrow)"/>
+<polyline points="1790,727 1830,727" fill="none" stroke="#344256" stroke-width="1.7" marker-end="url(#arrow)"/>
+<polyline points="2000,727 2160,727" fill="none" stroke="#344256" stroke-width="1.7" marker-end="url(#arrow)"/>
+<polyline points="2340,727 2400,728" fill="none" stroke="#344256" stroke-width="1.7" marker-end="url(#arrow)"/>
+<circle cx="231" cy="238" r="19" fill="#fff" stroke="#344256" stroke-width="2"/>
+<text x="231.5" y="276" class="small" text-anchor="middle"><tspan x="231.5" dy="0">Начало</tspan></text>
+<rect x="290" y="195" width="190" height="80" rx="11" fill="#edf5ff" stroke="#2868d7" stroke-width="1.7"/>
+<circle cx="307" cy="210" r="3.2" fill="none" stroke="#2868d7" stroke-width="1.3"/>
+<path d="M302,220 Q307,214 312,220" fill="none" stroke="#2868d7" stroke-width="1.3"/>
+<text x="385" y="240" class="node" text-anchor="middle"><tspan x="385" dy="0">Настроить тест</tspan></text>
+<rect x="550" y="195" width="180" height="80" rx="11" fill="#edf5ff" stroke="#2868d7" stroke-width="1.7"/>
+<circle cx="567" cy="210" r="3.2" fill="none" stroke="#2868d7" stroke-width="1.3"/>
+<path d="M562,220 Q567,214 572,220" fill="none" stroke="#2868d7" stroke-width="1.3"/>
+<text x="640" y="240" class="node" text-anchor="middle"><tspan x="640" dy="0">Запустить генерацию</tspan></text>
+<circle cx="1215" cy="236" r="19" fill="#fff" stroke="#344256" stroke-width="2"/>
+<circle cx="1215" cy="236" r="15" fill="none" stroke="#344256" stroke-width="1.2"/>
+<rect x="1205" y="229" width="20" height="14" fill="none" stroke="#344256"/>
+<path d="M1205,229 L1215,237 L1225,229" fill="none" stroke="#344256"/>
+<text x="1215" y="187" class="small" text-anchor="middle"><tspan x="1215" dy="0">Тест</tspan><tspan x="1215" dy="18">получен</tspan></text>
+<rect x="1260" y="195" width="185" height="80" rx="11" fill="#edf5ff" stroke="#2868d7" stroke-width="1.7"/>
+<circle cx="1277" cy="210" r="3.2" fill="none" stroke="#2868d7" stroke-width="1.3"/>
+<path d="M1272,220 Q1277,214 1282,220" fill="none" stroke="#2868d7" stroke-width="1.3"/>
+<text x="1352.5" y="231" class="node" text-anchor="middle"><tspan x="1352.5" dy="0">Проверить вопросы и</tspan><tspan x="1352.5" dy="18">ответы</tspan></text>
+<polygon points="1501,204 1532,235 1501,266 1470,235" fill="#fff8eb" stroke="#a45e08" stroke-width="2"/>
+<path d="M1491,225 L1511,245 M1511,225 L1491,245" stroke="#a45e08" stroke-width="3"/>
+<text x="1501.5" y="177" class="small" text-anchor="middle"><tspan x="1501.5" dy="0">Тест</tspan><tspan x="1501.5" dy="18">готов?</tspan></text>
+<rect x="1600" y="135" width="190" height="75" rx="11" fill="#edf5ff" stroke="#2868d7" stroke-width="1.7"/>
+<circle cx="1617" cy="150" r="3.2" fill="none" stroke="#2868d7" stroke-width="1.3"/>
+<path d="M1612,160 Q1617,154 1622,160" fill="none" stroke="#2868d7" stroke-width="1.3"/>
+<text x="1695" y="168.5" class="node" text-anchor="middle"><tspan x="1695" dy="0">Запросить замену</tspan><tspan x="1695" dy="18">вопроса</tspan></text>
+<circle cx="2110" cy="171" r="19" fill="#fff" stroke="#344256" stroke-width="2"/>
+<circle cx="2110" cy="171" r="15" fill="none" stroke="#344256" stroke-width="1.2"/>
+<rect x="2100" y="164" width="20" height="14" fill="none" stroke="#344256"/>
+<path d="M2100,164 L2110,172 L2120,164" fill="none" stroke="#344256"/>
+<text x="2141" y="175" class="small" text-anchor="start"><tspan x="2141" dy="0">Исправление</tspan></text>
+<rect x="1600" y="295" width="190" height="70" rx="11" fill="#edf5ff" stroke="#2868d7" stroke-width="1.7"/>
+<circle cx="1617" cy="310" r="3.2" fill="none" stroke="#2868d7" stroke-width="1.3"/>
+<path d="M1612,320 Q1617,314 1622,320" fill="none" stroke="#2868d7" stroke-width="1.3"/>
+<text x="1695" y="326" class="node" text-anchor="middle"><tspan x="1695" dy="0">Задать настройки</tspan><tspan x="1695" dy="18">экспорта</tspan></text>
+<circle cx="2250" cy="331" r="19" fill="#fff" stroke="#344256" stroke-width="2"/>
+<circle cx="2250" cy="331" r="15" fill="none" stroke="#344256" stroke-width="1.2"/>
+<rect x="2240" y="324" width="20" height="14" fill="none" stroke="#344256"/>
+<path d="M2240,324 L2250,332 L2260,324" fill="none" stroke="#344256"/>
+<text x="2250.5" y="282" class="small" text-anchor="middle"><tspan x="2250.5" dy="0">DOCX</tspan><tspan x="2250.5" dy="18">получен</tspan></text>
+<circle cx="2421" cy="331" r="19" fill="#fff" stroke="#344256" stroke-width="4"/>
+<text x="2421" y="369" class="small" text-anchor="middle"><tspan x="2421" dy="0">Готово</tspan></text>
+<circle cx="640" cy="621" r="19" fill="#fff" stroke="#344256" stroke-width="2"/>
+<rect x="630" y="614" width="20" height="14" fill="none" stroke="#344256"/>
+<path d="M630,614 L640,622 L650,614" fill="none" stroke="#344256"/>
+<text x="640" y="659" class="small" text-anchor="middle"><tspan x="640" dy="0">Получен</tspan><tspan x="640" dy="18">запрос</tspan></text>
+<rect x="720" y="580" width="190" height="82" rx="11" fill="#f0f2ff" stroke="#5a5cf0" stroke-width="1.7"/>
+<circle cx="739" cy="598" r="4.2" fill="none" stroke="#5a5cf0" stroke-width="1.3"/>
+<circle cx="739" cy="598" r="1.4" fill="#5a5cf0"/>
+<line x1="739" y1="592.96" x2="739" y2="591" stroke="#5a5cf0" stroke-width="1.2"/>
+<line x1="742.6" y1="594.4" x2="744" y2="593" stroke="#5a5cf0" stroke-width="1.2"/>
+<line x1="744.04" y1="598" x2="746" y2="598" stroke="#5a5cf0" stroke-width="1.2"/>
+<line x1="742.6" y1="601.6" x2="744" y2="603" stroke="#5a5cf0" stroke-width="1.2"/>
+<line x1="739" y1="603.04" x2="739" y2="605" stroke="#5a5cf0" stroke-width="1.2"/>
+<line x1="735.4" y1="601.6" x2="734" y2="603" stroke="#5a5cf0" stroke-width="1.2"/>
+<line x1="733.96" y1="598" x2="732" y2="598" stroke="#5a5cf0" stroke-width="1.2"/>
+<line x1="735.4" y1="594.4" x2="734" y2="593" stroke="#5a5cf0" stroke-width="1.2"/>
+<text x="815" y="617" class="node" text-anchor="middle"><tspan x="815" dy="0">Сформировать варианты</tspan><tspan x="815" dy="18">теста</tspan></text>
+<rect x="945" y="580" width="165" height="82" rx="11" fill="#f0f2ff" stroke="#5a5cf0" stroke-width="1.7"/>
+<circle cx="964" cy="598" r="4.2" fill="none" stroke="#5a5cf0" stroke-width="1.3"/>
+<circle cx="964" cy="598" r="1.4" fill="#5a5cf0"/>
+<line x1="964" y1="592.96" x2="964" y2="591" stroke="#5a5cf0" stroke-width="1.2"/>
+<line x1="967.6" y1="594.4" x2="969" y2="593" stroke="#5a5cf0" stroke-width="1.2"/>
+<line x1="969.04" y1="598" x2="971" y2="598" stroke="#5a5cf0" stroke-width="1.2"/>
+<line x1="967.6" y1="601.6" x2="969" y2="603" stroke="#5a5cf0" stroke-width="1.2"/>
+<line x1="964" y1="603.04" x2="964" y2="605" stroke="#5a5cf0" stroke-width="1.2"/>
+<line x1="960.4" y1="601.6" x2="959" y2="603" stroke="#5a5cf0" stroke-width="1.2"/>
+<line x1="958.96" y1="598" x2="957" y2="598" stroke="#5a5cf0" stroke-width="1.2"/>
+<line x1="960.4" y1="594.4" x2="959" y2="593" stroke="#5a5cf0" stroke-width="1.2"/>
+<text x="1027.5" y="617" class="node" text-anchor="middle"><tspan x="1027.5" dy="0">Сохранить тест в</tspan><tspan x="1027.5" dy="18">истории</tspan></text>
+<rect x="1130" y="580" width="170" height="82" rx="11" fill="#fff" stroke="#56657a" stroke-width="1.7"/>
+<rect x="1142" y="591" width="17" height="12" rx="1" fill="#344256" stroke="#344256" stroke-width="1.2"/>
+<path d="M1142,591 L1150.5,597 L1159,591" fill="none" stroke="#fff" stroke-width="1.2"/>
+<text x="1215" y="617" class="node" text-anchor="middle"><tspan x="1215" dy="0">Передать тест</tspan><tspan x="1215" dy="18">учителю</tspan></text>
+<polygon points="1501,586 1532,617 1501,648 1470,617" fill="#fff8eb" stroke="#a45e08" stroke-width="2"/>
+<circle cx="1501" cy="617" r="14" fill="none" stroke="#a45e08" stroke-width="1.7"/>
+<circle cx="1501" cy="617" r="11" fill="none" stroke="#a45e08" stroke-width="1.4"/>
+<polygon points="1501,609 1508.6,614.5 1505.7,623.5 1496.3,623.5 1493.4,614.5" fill="none" stroke="#a45e08" stroke-width="1.5"/>
+<text x="1502" y="541" class="small" text-anchor="middle"><tspan x="1502" dy="0">Ждать</tspan><tspan x="1502" dy="18">действие</tspan><tspan x="1502" dy="18">учителя</tspan></text>
+<rect x="1600" y="500" width="190" height="75" rx="11" fill="#fff" stroke="#56657a" stroke-width="1.7"/>
+<rect x="1612" y="511" width="17" height="12" rx="1" fill="#fff" stroke="#344256" stroke-width="1.2"/>
+<path d="M1612,511 L1620.5,517 L1629,511" fill="none" stroke="#344256" stroke-width="1.2"/>
+<text x="1695" y="533.5" class="node" text-anchor="middle"><tspan x="1695" dy="0">Получить запрос на</tspan><tspan x="1695" dy="18">замену</tspan></text>
+<rect x="1830" y="500" width="170" height="75" rx="11" fill="#f0f2ff" stroke="#5a5cf0" stroke-width="1.7"/>
+<circle cx="1849" cy="518" r="4.2" fill="none" stroke="#5a5cf0" stroke-width="1.3"/>
+<circle cx="1849" cy="518" r="1.4" fill="#5a5cf0"/>
+<line x1="1849" y1="512.96" x2="1849" y2="511" stroke="#5a5cf0" stroke-width="1.2"/>
+<line x1="1852.6" y1="514.4" x2="1854" y2="513" stroke="#5a5cf0" stroke-width="1.2"/>
+<line x1="1854.04" y1="518" x2="1856" y2="518" stroke="#5a5cf0" stroke-width="1.2"/>
+<line x1="1852.6" y1="521.6" x2="1854" y2="523" stroke="#5a5cf0" stroke-width="1.2"/>
+<line x1="1849" y1="523.04" x2="1849" y2="525" stroke="#5a5cf0" stroke-width="1.2"/>
+<line x1="1845.4" y1="521.6" x2="1844" y2="523" stroke="#5a5cf0" stroke-width="1.2"/>
+<line x1="1843.96" y1="518" x2="1842" y2="518" stroke="#5a5cf0" stroke-width="1.2"/>
+<line x1="1845.4" y1="514.4" x2="1844" y2="513" stroke="#5a5cf0" stroke-width="1.2"/>
+<text x="1915" y="542.5" class="node" text-anchor="middle"><tspan x="1915" dy="0">Заменить вопрос</tspan></text>
+<rect x="2020" y="500" width="180" height="75" rx="11" fill="#fff" stroke="#56657a" stroke-width="1.7"/>
+<rect x="2032" y="511" width="17" height="12" rx="1" fill="#344256" stroke="#344256" stroke-width="1.2"/>
+<path d="M2032,511 L2040.5,517 L2049,511" fill="none" stroke="#fff" stroke-width="1.2"/>
+<text x="2110" y="533.5" class="node" text-anchor="middle"><tspan x="2110" dy="0">Передать</tspan><tspan x="2110" dy="18">исправленный тест</tspan></text>
+<rect x="1600" y="690" width="190" height="75" rx="11" fill="#fff" stroke="#56657a" stroke-width="1.7"/>
+<rect x="1612" y="701" width="17" height="12" rx="1" fill="#fff" stroke="#344256" stroke-width="1.2"/>
+<path d="M1612,701 L1620.5,707 L1629,701" fill="none" stroke="#344256" stroke-width="1.2"/>
+<text x="1695" y="723.5" class="node" text-anchor="middle"><tspan x="1695" dy="0">Получить настройки</tspan><tspan x="1695" dy="18">экспорта</tspan></text>
+<rect x="1830" y="690" width="170" height="75" rx="11" fill="#f0f2ff" stroke="#5a5cf0" stroke-width="1.7"/>
+<circle cx="1849" cy="708" r="4.2" fill="none" stroke="#5a5cf0" stroke-width="1.3"/>
+<circle cx="1849" cy="708" r="1.4" fill="#5a5cf0"/>
+<line x1="1849" y1="702.96" x2="1849" y2="701" stroke="#5a5cf0" stroke-width="1.2"/>
+<line x1="1852.6" y1="704.4" x2="1854" y2="703" stroke="#5a5cf0" stroke-width="1.2"/>
+<line x1="1854.04" y1="708" x2="1856" y2="708" stroke="#5a5cf0" stroke-width="1.2"/>
+<line x1="1852.6" y1="711.6" x2="1854" y2="713" stroke="#5a5cf0" stroke-width="1.2"/>
+<line x1="1849" y1="713.04" x2="1849" y2="715" stroke="#5a5cf0" stroke-width="1.2"/>
+<line x1="1845.4" y1="711.6" x2="1844" y2="713" stroke="#5a5cf0" stroke-width="1.2"/>
+<line x1="1843.96" y1="708" x2="1842" y2="708" stroke="#5a5cf0" stroke-width="1.2"/>
+<line x1="1845.4" y1="704.4" x2="1844" y2="703" stroke="#5a5cf0" stroke-width="1.2"/>
+<text x="1915" y="732.5" class="node" text-anchor="middle"><tspan x="1915" dy="0">Сформировать DOCX</tspan></text>
+<rect x="2160" y="690" width="180" height="75" rx="11" fill="#fff" stroke="#56657a" stroke-width="1.7"/>
+<rect x="2172" y="701" width="17" height="12" rx="1" fill="#344256" stroke="#344256" stroke-width="1.2"/>
+<path d="M2172,701 L2180.5,707 L2189,701" fill="none" stroke="#fff" stroke-width="1.2"/>
+<text x="2250" y="723.5" class="node" text-anchor="middle"><tspan x="2250" dy="0">Передать готовый</tspan><tspan x="2250" dy="18">файл</tspan></text>
+<circle cx="2421" cy="728" r="19" fill="#fff" stroke="#344256" stroke-width="4"/>
+<text x="2421" y="766" class="small" text-anchor="middle"><tspan x="2421" dy="0">Завершено</tspan></text>
+<text x="1575.5" y="206" class="edge" text-anchor="middle"><tspan x="1575.5" dy="0">нет</tspan></text>
+<text x="1516.5" y="300" class="edge" text-anchor="middle"><tspan x="1516.5" dy="0">да</tspan></text>
+<text x="1580" y="585" class="edge" text-anchor="middle"><tspan x="1580" dy="0">замена</tspan></text>
+<text x="1470" y="690" class="edge" text-anchor="middle"><tspan x="1470" dy="0">экспорт</tspan></text>
+</svg>
