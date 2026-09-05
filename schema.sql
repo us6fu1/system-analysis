@@ -4,7 +4,7 @@
 CREATE TABLE textbook (
     id BIGSERIAL PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
-    grade INTEGER CHECK (grade BETWEEN 5 AND 11),
+    grade INTEGER NOT NULL CHECK (grade BETWEEN 5 AND 11),
     UNIQUE (title, grade)
 );
 
@@ -29,25 +29,28 @@ CREATE TABLE generated_test (
     topic VARCHAR(255) NOT NULL,
     difficulty VARCHAR(10) NOT NULL
         CHECK (difficulty IN ('easy', 'medium', 'hard')),
-    status VARCHAR(10) NOT NULL DEFAULT 'ready'
-        CHECK (status IN ('ready', 'failed')),
     created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE test_question (
+CREATE TABLE test_variant (
+    id BIGSERIAL PRIMARY KEY,
     test_id BIGINT NOT NULL REFERENCES generated_test(id) ON DELETE CASCADE,
     variant_number INTEGER NOT NULL CHECK (variant_number > 0),
+    UNIQUE (test_id, variant_number)
+);
+
+CREATE TABLE test_question (
+    variant_id BIGINT NOT NULL REFERENCES test_variant(id) ON DELETE CASCADE,
     position INTEGER NOT NULL CHECK (position > 0),
     question_id BIGINT NOT NULL REFERENCES question(id),
     replaced_from_question_id BIGINT REFERENCES question(id),
-    PRIMARY KEY (test_id, variant_number, position),
-    UNIQUE (test_id, variant_number, question_id)
+    PRIMARY KEY (variant_id, position),
+    UNIQUE (variant_id, question_id)
 );
 
 CREATE TABLE export_history (
     id BIGSERIAL PRIMARY KEY,
-    test_id BIGINT NOT NULL REFERENCES generated_test(id) ON DELETE CASCADE,
-    variant_number INTEGER NOT NULL CHECK (variant_number > 0),
+    variant_id BIGINT NOT NULL REFERENCES test_variant(id) ON DELETE CASCADE,
     file_name VARCHAR(255) NOT NULL,
     created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
