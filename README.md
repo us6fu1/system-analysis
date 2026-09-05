@@ -50,6 +50,119 @@
 - [`schema.sql`](schema.sql) — схема данных для PostgreSQL;
 - [`queries.sql`](queries.sql) — примеры запросов к этой схеме.
 
+### ER-модель
+
+```mermaid
+erDiagram
+    TEXTBOOK ||--o{ QUESTION : contains
+    TEXTBOOK ||--o{ GENERATED_TEST : used_for
+    GENERATED_TEST ||--|{ TEST_QUESTION : consists_of
+    QUESTION ||--o{ TEST_QUESTION : selected_as
+    GENERATED_TEST ||--o{ EXPORT_HISTORY : exported_to
+
+    TEXTBOOK {
+        bigint id PK
+        string title
+        int grade
+    }
+    QUESTION {
+        bigint id PK
+        bigint textbook_id FK
+        string question_type
+        string topic
+        string difficulty
+        text question_text
+    }
+    GENERATED_TEST {
+        bigint id PK
+        bigint textbook_id FK
+        string topic
+        string difficulty
+        datetime created_at
+    }
+    TEST_QUESTION {
+        bigint test_id FK
+        int variant_number
+        int position
+        bigint question_id FK
+    }
+    EXPORT_HISTORY {
+        bigint id PK
+        bigint test_id FK
+        string file_name
+        datetime created_at
+    }
+```
+
+### REST API
+
+| Метод | URL | Результат |
+|---|---|---|
+| `POST` | `/tests` | создать тест |
+| `GET` | `/tests/{testId}` | получить созданный тест |
+| `POST` | `/tests/{testId}/questions/{position}/replace` | заменить один вопрос |
+| `POST` | `/tests/{testId}/exports` | сохранить вариант в DOCX |
+
+Полный контракт с параметрами и ошибками находится в
+[`openapi.yaml`](openapi.yaml).
+
+### Создание теста
+
+```mermaid
+sequenceDiagram
+    actor Teacher as Преподаватель
+    participant UI as Интерфейс
+    participant API as REST API
+    participant Selection as Подбор вопросов
+    participant DB as PostgreSQL
+
+    Teacher->>UI: Указывает тему и параметры
+    UI->>API: POST /tests
+    API->>API: Проверяет входные данные
+    API->>Selection: Передаёт параметры теста
+    Selection->>DB: Запрашивает подходящие вопросы
+    DB-->>Selection: Возвращает вопросы
+    Selection-->>API: Возвращает готовый вариант
+    API->>DB: Сохраняет тест
+    API-->>UI: 201 Created и готовый тест
+    UI-->>Teacher: Показывает результат
+```
+
+### Замена вопроса
+
+```mermaid
+sequenceDiagram
+    actor Teacher as Преподаватель
+    participant UI as Интерфейс
+    participant API as REST API
+    participant Selection as Подбор вопросов
+    participant DB as PostgreSQL
+
+    Teacher->>UI: Выбирает вопрос для замены
+    UI->>API: POST /tests/{id}/questions/{position}/replace
+    API->>DB: Получает состав варианта
+    API->>Selection: Ищет вопрос того же типа без дублей
+    alt Замена найдена
+        Selection-->>API: Новый вопрос
+        API->>DB: Обновляет позицию
+        API-->>UI: 200 OK
+        UI-->>Teacher: Показывает обновлённый тест
+    else Замена не найдена
+        Selection-->>API: Подходящих вопросов нет
+        API-->>UI: 409, тест не изменён
+        UI-->>Teacher: Показывает причину
+    end
+```
+
+### Что есть в SQL
+
+В [`queries.sql`](queries.sql) находятся примеры:
+
+- выбор вопросов варианта через два `JOIN`;
+- подсчёт вопросов по типам через `GROUP BY`;
+- поиск заменённых и неиспользованных вопросов;
+- получение последнего экспорта через `ROW_NUMBER()`.
+
 ## Что в кейсе настоящее, а что учебное
 
 Приложение и его исходный код существуют. BPMN и документ сделаны на основе
