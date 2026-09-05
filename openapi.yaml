@@ -1,0 +1,302 @@
+openapi: 3.0.3
+info:
+  title: AI History Helper API
+  version: 0.1.0
+  description: |
+    Учебный TO-BE-контракт для возможной серверной версии.
+    В текущем десктопном приложении этот API не реализован.
+servers:
+  - url: http://localhost:8000/api
+
+paths:
+  /tests:
+    post:
+      summary: Создать тест
+      operationId: createTest
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateTestRequest'
+      responses:
+        '201':
+          description: Тест создан
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Test'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '409':
+          description: Недостаточно подходящих вопросов
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /tests/{testId}:
+    get:
+      summary: Получить тест
+      operationId: getTest
+      parameters:
+        - $ref: '#/components/parameters/TestId'
+      responses:
+        '200':
+          description: Тест найден
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Test'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /tests/{testId}/questions/{position}/replace:
+    post:
+      summary: Заменить один вопрос
+      operationId: replaceQuestion
+      parameters:
+        - $ref: '#/components/parameters/TestId'
+        - name: position
+          in: path
+          required: true
+          description: Номер вопроса, начиная с 1
+          schema:
+            type: integer
+            minimum: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReplaceQuestionRequest'
+      responses:
+        '200':
+          description: Вопрос заменён
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TestQuestion'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          description: Подходящая замена не найдена, тест не изменён
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /tests/{testId}/exports:
+    post:
+      summary: Экспортировать вариант в DOCX
+      operationId: exportTest
+      parameters:
+        - $ref: '#/components/parameters/TestId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExportRequest'
+      responses:
+        '201':
+          description: DOCX создан
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExportResult'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+components:
+  parameters:
+    TestId:
+      name: testId
+      in: path
+      required: true
+      schema:
+        type: integer
+        format: int64
+        minimum: 1
+
+  responses:
+    BadRequest:
+      description: Ошибка входных данных
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Тест или вопрос не найден
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+  schemas:
+    CreateTestRequest:
+      type: object
+      required:
+        - textbookId
+        - topic
+        - difficulty
+        - variantCount
+        - questionCounts
+      properties:
+        textbookId:
+          type: integer
+          format: int64
+          minimum: 1
+        topic:
+          type: string
+          minLength: 1
+          maxLength: 200
+          example: Древний Египет
+        difficulty:
+          type: string
+          enum: [easy, medium, hard]
+        variantCount:
+          type: integer
+          minimum: 1
+          maximum: 10
+        questionCounts:
+          $ref: '#/components/schemas/QuestionCounts'
+
+    QuestionCounts:
+      type: object
+      description: Хотя бы для одного типа нужно указать число больше нуля
+      additionalProperties: false
+      properties:
+        test:
+          type: integer
+          minimum: 0
+          default: 0
+        open:
+          type: integer
+          minimum: 0
+          default: 0
+        match:
+          type: integer
+          minimum: 0
+          default: 0
+        chronology:
+          type: integer
+          minimum: 0
+          default: 0
+
+    ReplaceQuestionRequest:
+      type: object
+      required: [variantNumber]
+      properties:
+        variantNumber:
+          type: integer
+          minimum: 1
+        comment:
+          type: string
+          maxLength: 300
+          example: Нужен другой вопрос по той же теме
+
+    ExportRequest:
+      type: object
+      required: [variantNumber]
+      properties:
+        variantNumber:
+          type: integer
+          minimum: 1
+        includeAnswers:
+          type: boolean
+          default: false
+
+    Question:
+      type: object
+      required: [id, questionType, text, difficulty]
+      properties:
+        id:
+          type: integer
+          format: int64
+        questionType:
+          type: string
+          enum: [test, open, match, chronology]
+        topic:
+          type: string
+        difficulty:
+          type: string
+          enum: [easy, medium, hard]
+        text:
+          type: string
+        options:
+          type: array
+          items:
+            type: string
+        correctAnswer:
+          type: string
+        sourcePage:
+          type: string
+
+    TestQuestion:
+      type: object
+      required: [variantNumber, position, question]
+      properties:
+        variantNumber:
+          type: integer
+        position:
+          type: integer
+        replacedFromQuestionId:
+          type: integer
+          format: int64
+          nullable: true
+        question:
+          $ref: '#/components/schemas/Question'
+
+    Test:
+      type: object
+      required: [id, topic, difficulty, status, questions, createdAt]
+      properties:
+        id:
+          type: integer
+          format: int64
+        topic:
+          type: string
+        difficulty:
+          type: string
+          enum: [easy, medium, hard]
+        status:
+          type: string
+          enum: [ready, failed]
+        questions:
+          type: array
+          items:
+            $ref: '#/components/schemas/TestQuestion'
+        createdAt:
+          type: string
+          format: date-time
+
+    ExportResult:
+      type: object
+      required: [id, testId, variantNumber, fileName]
+      properties:
+        id:
+          type: integer
+          format: int64
+        testId:
+          type: integer
+          format: int64
+        variantNumber:
+          type: integer
+        fileName:
+          type: string
+          example: Test_Drevniy_Egipet_V1.docx
+
+    Error:
+      type: object
+      required: [code, message]
+      properties:
+        code:
+          type: string
+          example: REPLACEMENT_NOT_FOUND
+        message:
+          type: string
