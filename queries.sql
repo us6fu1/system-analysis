@@ -5,8 +5,7 @@ SELECT
     tq.position,
     q.question_type,
     q.question_text,
-    q.answer_json,
-    q.explanation
+    q.correct_answer
 FROM generated_test AS gt
 JOIN test_variant AS tv
     ON tv.test_id = gt.id
