@@ -1,12 +1,12 @@
 openapi: 3.0.3
 info:
   title: AI History Helper API
-  version: 0.2.0
+  version: 0.3.0
   description: |
     Учебный TO-BE-контракт для возможной серверной версии.
     В текущем десктопном приложении этот API не реализован.
 servers:
-  - url: http://localhost:8000/api
+  - url: http://localhost:8000/api/v1
 
 paths:
   /textbooks:
@@ -40,6 +40,7 @@ paths:
   /tests:
     get:
       summary: Получить историю тестов
+      description: Результаты отсортированы по createdAt и id от новых к старым.
       operationId: listTests
       parameters:
         - name: textbookId
@@ -93,12 +94,12 @@ paths:
               textbookId: 1
               topic: Древний Египет
               difficulty: medium
-              variantCount: 2
+              variantCount: 1
               questionCounts:
-                test: 6
-                open: 2
-                match: 1
-                chronology: 1
+                test: 1
+                open: 0
+                match: 0
+                chronology: 0
       responses:
         '201':
           description: Тест создан
@@ -126,7 +127,10 @@ paths:
                           options:
                             - Был основой земледелия
                             - Отделял Египет от Средиземного моря
-                          correctAnswer: Был основой земледелия
+                          answer:
+                            values:
+                              - Был основой земледелия
+                          explanation: Разливы Нила увлажняли почву и оставляли плодородный ил.
                           sourcePage: '78'
                 createdAt: '2026-05-21T18:40:00Z'
         '400':
@@ -196,8 +200,14 @@ paths:
                   topic: Древний Египет
                   difficulty: medium
                   text: Почему разливы Нила были важны для земледелия?
-                  options: []
-                  correctAnswer: Они делали почву плодородной
+                  options:
+                    - Они делали почву плодородной
+                    - Они уничтожали посевы каждый год
+                    - Они приносили морскую соль
+                  answer:
+                    values:
+                      - Они делали почву плодородной
+                  explanation: После разлива на полях оставался плодородный ил.
                   sourcePage: '81'
         '400':
           $ref: '#/components/responses/BadRequest'
@@ -247,7 +257,7 @@ paths:
                 testId: 42
                 variantNumber: 1
                 fileName: Test_Drevniy_Egipet_V1.docx
-                downloadUrl: http://localhost:8000/api/exports/501/file
+                downloadUrl: http://localhost:8000/api/v1/exports/501/file
         '400':
           $ref: '#/components/responses/BadRequest'
         '404':
@@ -342,6 +352,10 @@ components:
           example:
             code: VALIDATION_ERROR
             message: Укажите тему и хотя бы один тип задания
+            details:
+              - field: questionCounts
+                issue: Все значения равны нулю
+            traceId: 6f57746b-5080-4a79-b60c-693a7df2ac28
     NotFound:
       description: Запрошенный ресурс не найден
       content:
@@ -351,6 +365,7 @@ components:
           example:
             code: RESOURCE_NOT_FOUND
             message: Тест или вариант не найден
+            traceId: 04a39d68-362a-4f44-baae-46a08ca2954e
     InternalError:
       description: Внутренняя ошибка сервера
       content:
@@ -360,6 +375,7 @@ components:
           example:
             code: INTERNAL_ERROR
             message: Не удалось обработать запрос
+            traceId: ab106cdf-f827-4fe0-8d35-4894c86e0bc7
     ServiceUnavailable:
       description: Сервис подбора вопросов или экспорта временно недоступен
       content:
@@ -368,7 +384,8 @@ components:
             $ref: '#/components/schemas/Error'
           example:
             code: SERVICE_UNAVAILABLE
-            message: Локальная модель не загружена
+            message: Сервис подбора вопросов временно недоступен
+            traceId: 2e7dcd09-a16d-4f63-974c-8f7aaf921b49
 
   schemas:
     Textbook:
@@ -458,7 +475,7 @@ components:
 
     Question:
       type: object
-      required: [id, questionType, text, difficulty]
+      required: [id, questionType, text, difficulty, answer]
       properties:
         id:
           type: integer
@@ -477,12 +494,44 @@ components:
           type: array
           items:
             type: string
-        correctAnswer:
+        answer:
+          $ref: '#/components/schemas/QuestionAnswer'
+        explanation:
           type: string
           nullable: true
         sourcePage:
           type: string
           nullable: true
+
+    QuestionAnswer:
+      type: object
+      description: |
+        Для test и open используется values, для match — pairs,
+        для chronology — order. Сервер проверяет структуру по questionType.
+      additionalProperties: false
+      properties:
+        values:
+          type: array
+          items:
+            type: string
+        pairs:
+          type: array
+          items:
+            $ref: '#/components/schemas/AnswerPair'
+        order:
+          type: array
+          items:
+            type: string
+
+    AnswerPair:
+      type: object
+      additionalProperties: false
+      required: [left, right]
+      properties:
+        left:
+          type: string
+        right:
+          type: string
 
     TestQuestion:
       type: object
@@ -528,6 +577,9 @@ components:
         variantCount:
           type: integer
           minimum: 1
+        modelName:
+          type: string
+          nullable: true
         variants:
           type: array
           items:
@@ -553,6 +605,9 @@ components:
           enum: [easy, medium, hard]
         variantCount:
           type: integer
+        modelName:
+          type: string
+          nullable: true
         createdAt:
           type: string
           format: date-time
@@ -599,3 +654,11 @@ components:
           type: string
         message:
           type: string
+        details:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+        traceId:
+          type: string
+          format: uuid

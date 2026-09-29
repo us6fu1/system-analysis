@@ -18,7 +18,8 @@ CREATE TABLE question (
         CHECK (difficulty IN ('easy', 'medium', 'hard')),
     question_text TEXT NOT NULL,
     options_json JSONB NOT NULL DEFAULT '[]'::jsonb,
-    correct_answer TEXT,
+    answer_json JSONB NOT NULL DEFAULT '{}'::jsonb,
+    explanation TEXT,
     source_page VARCHAR(50),
     UNIQUE (textbook_id, question_text)
 );
@@ -29,6 +30,7 @@ CREATE TABLE generated_test (
     topic VARCHAR(255) NOT NULL,
     difficulty VARCHAR(10) NOT NULL
         CHECK (difficulty IN ('easy', 'medium', 'hard')),
+    model_name VARCHAR(255),
     created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -52,6 +54,7 @@ CREATE TABLE export_history (
     id BIGSERIAL PRIMARY KEY,
     variant_id BIGINT NOT NULL REFERENCES test_variant(id) ON DELETE CASCADE,
     file_name VARCHAR(255) NOT NULL,
+    storage_key VARCHAR(512) NOT NULL,
     created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -59,4 +62,4 @@ CREATE INDEX idx_question_filter
     ON question (textbook_id, topic, question_type, difficulty);
 
 CREATE INDEX idx_generated_test_created_at
-    ON generated_test (created_at DESC);
+    ON generated_test (created_at DESC, id DESC);
